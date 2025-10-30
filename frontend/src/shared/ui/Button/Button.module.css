@@ -1,0 +1,42 @@
+.button {
+  border: none;
+  cursor: pointer;
+}
+
+
+/* 타입 - primary */
+.button--type-primary {
+  background-color: var( --color-primary);
+  color: white;
+}
+
+/* 타입 - default */
+.button--type-default {
+  background-color: var( --color-background-default);
+}
+
+
+/* 버튼 호버 */
+.button--type-primary:hover{
+  background-color: var(--color-primary-600);
+}
+
+
+
+/* 사이즈 */
+.button--size-medium {
+  height: 32px;
+  font-size: 0.9rem;      /* 16px */
+  padding: 0 1rem;    /* 8px 16px */
+}
+
+.button--size-big {
+  font-size: 1.25rem;   /* 20px */
+  padding: 0.75rem 1.5rem;  /* 12px 24px */
+}
+
+/* radius */
+
+.button--rd {
+  border-radius: var(--radius-sm);
+}
