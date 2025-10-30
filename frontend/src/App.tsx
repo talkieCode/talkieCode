@@ -1,9 +1,9 @@
-import { Button } from "./shared/ui/Button/Button";
+import { LoginPage } from "./pages/login";
 
 function App() {
   return (
     <>
-      <Button type="primary">로그인</Button>
+      <LoginPage />
     </>
   );
 }

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   /* button color */
   --color-primary: #5865f2;
@@ -10,4 +14,12 @@
   --radius-md: calc(1rem - 8px);
   --radius-sm: calc(1rem - 10px);
   --radius-xs: calc(1rem - 12px);
+
+  /* dark */
+  --black-500 : #393A41;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
