@@ -1,23 +1,24 @@
 .button {
   border: none;
   cursor: pointer;
+  position: relative;
 }
 
 
 /* 타입 - primary */
 .button--type-primary {
-  background-color: var( --color-primary);
+  background-color: var(--color-primary);
   color: white;
 }
 
 /* 타입 - default */
 .button--type-default {
-  background-color: var( --color-background-default);
+  background-color: var(--color-background-default);
 }
 
 
 /* 버튼 호버 */
-.button--type-primary:hover{
+.button--type-primary:hover {
   background-color: var(--color-primary-600);
 }
 
@@ -26,17 +27,45 @@
 /* 사이즈 */
 .button--size-medium {
   height: 32px;
-  font-size: 0.9rem;      /* 16px */
-  padding: 0 1rem;    /* 8px 16px */
+  font-size: 0.9rem;
+  padding: 0 1rem;
 }
 
 .button--size-big {
-  font-size: 1.25rem;   /* 20px */
-  padding: 0.75rem 1.5rem;  /* 12px 24px */
+  font-size: 1.25rem;
+  padding: 0.75rem 1.5rem;
 }
 
 /* radius */
 
 .button--rd {
   border-radius: var(--radius-sm);
+}
+
+
+@media (min-width: 768px) {
+  .button--size-medium {
+    height: 40px;
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .button--rd {
+    border-radius: var(--radius-md);
+  }
+}
+
+/* PC (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .button--size-medium {
+    height: 48px;
+    font-size: 1rem;
+    padding: 0 1rem;
+
+  }
+
+  .button--rd {
+    border-radius: var(--radius-lg);
+  }
+
 }
