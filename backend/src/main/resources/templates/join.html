@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 가입</title>
+</head>
+<body>
+    <div class="container">
+        <h1>추가 정보를 입력해주세요.</h1>
+        <p class="info">소셜 로그인으로 인증된 정보입니다.</p>
+
+        <div id="error-message" class="error" style="display: none;"></div>
+
+        <!-- 입력 필드-->
+
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="email" id="email" th:value="${email}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="userName">이름</label>
+            <input type="text" id="userName" th:value="${userName}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="nickname">닉네임</label>
+            <input type="text" id="nickname" placehoder="사용할 닉네임을 입력하세요" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">한 줄 소개</label>
+            <textarea id="description" rows="3" placeholder="나를 소개해주세요 (선택)"></textarea>
+        </div>
+
+        <button onclick="submitJoin()">가입하기</button>
+    </div>
+</body>
+</html>
+
+<script>
+    async function submitJoin() {
+        const joinRequestDTO = {
+            email: document.getElementById('email').value,
+            userName: document.getElementById('userName').value,
+            nickname: document.getElementById('nickname').value.trim(),
+            description: document.getElementById('description').value.trim()
+        };
+
+        if (!joinRequestDTO.nickname) {
+            showError("닉네임을 입력해주세요.");
+            return;
+        }
+
+        hideError();
+
+        try {
+            const response = await fetch('/join/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(joinRequestDTO)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                window.location.href = result.redirect || '/main/page';
+            } else {
+                showError(result.error || "회원가입에 실패했습니다.");
+            }
+        } catch (error) {
+            console.error("Error: ",error);
+            showError("서버와 연결할 수 없습니다.");
+        }
+    }
+
+    function showError(msg) {
+        const errorDiv = document.getElementById('error-message');
+        errorDiv.textContent = msg;
+        errorDiv.style.display = 'block';
+    }
+
+    function hideError() {
+        document.getElementById('error-message').style.display = 'none';
+    }
+</script>
